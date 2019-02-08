@@ -30,14 +30,20 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
       3. A view to authenticate users
   2. Using **Services** to populate these data in views
   3. Stitching these views using **Routes and Guards**
-  4. Unit Testing for Components
-  5. E2E only for few views
-  6. **Writing CI configuration file**
-  7. **Dockerizing the frontend**
+  4. E2E only for few views
+  5. **Writing CI configuration file**
+  6. **Dockerizing the frontend**
 
 - **Building the Gipher Account Manager**
   1. Creating a server in Java to 
     1. Facilitate registration and login using **JWT token** and MySQL
+  2. Writing Swagger Documentation
+  3. Unit Testing
+  4. Write CI Configuration
+  5. Dockerize the application
+
+- **Building the Gipher Manager**
+  1. Creating a server in Java to 
     2. Server should be able to perform **CRUD operation** over GIFs and bookmarked resources stored in MySQL
   2. Writing Swagger Documentation
   3. Unit Testing
