@@ -22,7 +22,7 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
 
 ## Flow of Modules
 
-1. **Building Gipher Frontend**:
+- **Building Gipher Frontend**:
   1. Building **Responsive** Views:
     1. Build a View to show all GIF’s
       1. GIF’s - Populating from external api
@@ -35,7 +35,7 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
   6. **Writing CI configuration file**
   7. **Dockerizing the frontend**
 
-2. **Building the Gipher Account Manager**
+- **Building the Gipher Account Manager**
   1. Creating a server in Java to 
     1. Facilitate registration and login using **JWT token** and MySQL
     2. Server should be able to perform **CRUD operation** over GIFs and bookmarked resources stored in MySQL
@@ -44,6 +44,6 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
   4. Write CI Configuration
   5. Dockerize the application
 
-3. Write docker-compose file to build both frontend and backend application
+- Write docker-compose file to build both frontend and backend application
 
-4. Demonstrate the entire application
+- Demonstrate the entire application
