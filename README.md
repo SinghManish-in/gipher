@@ -30,7 +30,7 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
       3. A view to authenticate users
   2. Using **Services** to populate these data in views
   3. Stitching these views using **Routes and Guards**
-  4. E2E only for few views
+  4. E2E test cases and unit test cases
   5. **Writing CI configuration file**
   6. **Dockerizing the frontend**
 
