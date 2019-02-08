@@ -15,7 +15,7 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
     - search GIFs
     - bookmark GIFs
     - should be able to see bookmarked GIFs and Favorites created by him
-  - Application should be a **pwa** which can smoothly run on mobile devices.
+  - Application should be a **responsive** which can smoothly run on mobile devices.
 3. GipherManager - Application should be able to store all his
   - bookmarks
   - searches
@@ -34,6 +34,7 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
   5. E2E only for few views
   6. **Writing CI configuration file**
   7. **Dockerizing the frontend**
+
 2. **Building the Gipher Account Manager**
   1. Creating a server in Java to 
     1. Facilitate registration and login using **JWT token** and MySQL
@@ -42,5 +43,7 @@ Build a system to manage and recommend GIFs to a user. Refer https://giphy.com/
   3. Unit Testing
   4. Write CI Configuration
   5. Dockerize the application
+
 3. Write docker-compose file to build both frontend and backend application
+
 4. Demonstrate the entire application
