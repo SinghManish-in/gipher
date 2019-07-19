@@ -1,0 +1,18 @@
+spring:
+ data:
+  mongodb:
+   database: SBA
+   port: 27017
+   host: localhost   
+  
+ 
+ application:
+    name: category-service
+server:
+  port: 8088 
+  
+  
+  
+  
+  
+  
