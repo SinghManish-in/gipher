@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.giphermanager.exception.GipherNotFoundExeption;
 import com.stackroute.giphermanager.model.Gipher;
+import com.stackroute.giphermanager.model.GipherSearch;
 import com.stackroute.giphermanager.repository.GipherRepository;
 
 @Service
@@ -18,8 +19,7 @@ public class GipherServiceImpl implements GipherService {
 
 	@Override
 	public boolean createGipher(Gipher gipher) {
-		Gipher updatedNoteUser = gipherRepository.save(gipher);
-		if(null != updatedNoteUser) {
+		if(null != gipherRepository.save(gipher)) {
 			return true;
 		} else {
 			return false;
@@ -45,7 +45,7 @@ public class GipherServiceImpl implements GipherService {
 	}
 
 	@Override
-	public Gipher getNGipherByGipherId(String userId, int noteId) throws GipherNotFoundExeption {
+	public Gipher getGipherByUserId(String userId, int gipherId) throws GipherNotFoundExeption {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,6 +56,10 @@ public class GipherServiceImpl implements GipherService {
 		return null;
 	}
 
-	
+	@Override
+	public List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
