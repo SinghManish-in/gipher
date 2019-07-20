@@ -10,15 +10,13 @@ public interface GipherService {
 
 	    boolean createGipher(Gipher Gipher);
 
-	    boolean deleteGipher(String userId, int gipherId);
+	    boolean deleteGipher(int gipherId);
 
 	    boolean deleteAllGiphers(String userId) throws GipherNotFoundExeption;
 
-	    Gipher updateGipher(Gipher Gipher, int id, String userId) throws GipherNotFoundExeption;
+	    Gipher updateGipher(Gipher Gipher) throws GipherNotFoundExeption;
 
-	    Gipher getGipherByUserId(String userId,int gipherId) throws GipherNotFoundExeption;
-
-	    List<Gipher> getAllGipherByUserId(String userId);
+	    List<Gipher> getAllGipherByUserId(String userId) throws GipherNotFoundExeption;
 	    
 	    List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch);
 

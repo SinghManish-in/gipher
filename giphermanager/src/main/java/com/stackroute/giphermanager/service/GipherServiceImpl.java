@@ -26,11 +26,13 @@ public class GipherServiceImpl implements GipherService {
 		}
 	}
 
+
 	@Override
-	public boolean deleteGipher(String userId, int noteId) {
+	public boolean deleteGipher(int gipherId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 	@Override
 	public boolean deleteAllGiphers(String userId) throws GipherNotFoundExeption {
@@ -38,23 +40,20 @@ public class GipherServiceImpl implements GipherService {
 		return false;
 	}
 
+
 	@Override
-	public Gipher updateGipher(Gipher Gipher, int id, String userId) throws GipherNotFoundExeption {
+	public Gipher updateGipher(Gipher Gipher) throws GipherNotFoundExeption {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public Gipher getGipherByUserId(String userId, int gipherId) throws GipherNotFoundExeption {
+	public List<Gipher> getAllGipherByUserId(String userId) throws GipherNotFoundExeption {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<Gipher> getAllGipherByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) {
