@@ -16,7 +16,10 @@
        		<version>1.0</version>
    	</parent>
 	<dependencies>
-		<!--Add project specific dependencies here  -->
+		<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+</dependency>
 	</dependencies>
 
 
