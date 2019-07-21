@@ -39,6 +39,30 @@ public class GipherController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@GetMapping("/api/v1/gipher/bookmark/{bookmarkedBy}")
+	public ResponseEntity<?> getAllGipherByBookmarkedBy(@PathVariable("bookmarkedBy") String bookmarkedBy) {
+		List<Gipher> giphers;
+		try {
+			giphers = gipherService.getAllGipherByBookmark(bookmarkedBy);
+			return new ResponseEntity<>(giphers, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping("/api/v1/gipher/favourite/{favouritedBy}")
+	public ResponseEntity<?> getAllGipherByFavouritedBy(@PathVariable("favouritedBy") String favouritedBy) {
+		List<Gipher> giphers;
+		try {
+			giphers = gipherService.getAllGipherByFavorite(favouritedBy);
+			return new ResponseEntity<>(giphers, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 	@GetMapping("/api/v1/gipher/{giferId}")
 	public ResponseEntity<?> getAllGipherById(@PathVariable("userid") String userId) {

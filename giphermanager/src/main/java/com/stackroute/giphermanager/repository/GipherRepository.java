@@ -13,5 +13,11 @@ public interface GipherRepository extends MongoRepository<Gipher, String> {
 	
 	@Query("{ 'userId': ?0}")
 	public List<Gipher> getAllGipherByUserId(String userId);
+	
+	@Query("{ 'bookMarkedBy': ?0}")
+	public List<Gipher> getAllGipherByBookmark(String bookMarkedBy);
+
+	@Query("{ 'favouritedBy': ?0}")
+	public List<Gipher> getAllGipherByFavorite(String favouritedBy);
 
 }

@@ -36,23 +36,20 @@ public class GipherServiceImpl implements GipherService {
 	}
 
 	@Override
-	public boolean deleteGipher(int gipherId) throws GipherNotFoundExeption{
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteGipher(String gipherId) throws GipherNotFoundExeption{
+		gipherRepository.deleteById(gipherId);
 	}
 
 
 	@Override
-	public boolean deleteAllGiphers(String userId) throws GipherNotFoundExeption {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteAllGiphers() throws GipherNotFoundExeption {
+		gipherRepository.deleteAll();
 	}
 
 
 	@Override
-	public Gipher updateGipher(Gipher Gipher) throws GipherNotFoundExeption {
-		// TODO Auto-generated method stub
-		return null;
+	public Gipher updateGipher(Gipher gipher) throws GipherNotFoundExeption {
+		return gipherRepository.save(gipher);
 	}
 
 
@@ -63,14 +60,12 @@ public class GipherServiceImpl implements GipherService {
 	}
 
 	@Override
-	public List<Gipher> getAllGipherByBookmark(String userId) throws GipherNotFoundExeption {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Gipher> getAllGipherByBookmark(String bookMarkedBy) throws GipherNotFoundExeption {
+		return gipherRepository.getAllGipherByBookmark(bookMarkedBy);
 	}
 
 	@Override
-	public List<Gipher> getAllGipherByFavorite(String userId) throws GipherNotFoundExeption {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Gipher> getAllGipherByFavorite(String favoritedBy) throws GipherNotFoundExeption {
+		return gipherRepository.getAllGipherByBookmark(favoritedBy);
 	}
 }

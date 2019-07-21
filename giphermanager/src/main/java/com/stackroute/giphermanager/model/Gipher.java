@@ -11,16 +11,16 @@ public class Gipher {
 	private int gipherId;
 	private String embedURL;
 	private String bookMarkedBy;
-	private String favouriteBy;
+	private String favouritedBy;
 	private String userId;
 	
 	public Gipher(){}
 
-	public Gipher(int gipherId, String embedURL, String bookMarkedBy, String favouriteBy, String userId) {
+	public Gipher(int gipherId, String embedURL, String bookMarkedBy, String favouritedBy, String userId) {
 		this.gipherId = gipherId;
 		this.embedURL = embedURL;
 		this.bookMarkedBy = bookMarkedBy;
-		this.favouriteBy = favouriteBy;
+		this.favouritedBy = favouritedBy;
 		this.userId = userId;
 	}
 
@@ -48,12 +48,12 @@ public class Gipher {
 		this.bookMarkedBy = bookMarkedBy;
 	}
 
-	public String getFavouriteBy() {
-		return favouriteBy;
+	public String getFavouritedBy() {
+		return favouritedBy;
 	}
 
-	public void setFavouriteBy(String favouriteBy) {
-		this.favouriteBy = favouriteBy;
+	public void setFavouritedBy(String favouritedBy) {
+		this.favouritedBy = favouritedBy;
 	}
 
 	public String getUserId() {

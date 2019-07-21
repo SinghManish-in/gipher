@@ -10,9 +10,9 @@ public interface GipherService {
 
 	    boolean createGipher(Gipher Gipher);
 
-	    boolean deleteGipher(int gipherId) throws GipherNotFoundExeption;
+	    void deleteGipher(String gipherId) throws GipherNotFoundExeption;
 
-	    boolean deleteAllGiphers(String userId) throws GipherNotFoundExeption;
+	    void deleteAllGiphers() throws GipherNotFoundExeption;
 
 	    Gipher updateGipher(Gipher Gipher) throws GipherNotFoundExeption;
 
