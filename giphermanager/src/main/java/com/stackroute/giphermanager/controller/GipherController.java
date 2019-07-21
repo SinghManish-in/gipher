@@ -27,6 +27,18 @@ public class GipherController {
 	public GipherController(GipherService gipherService) {
 		this.gipherService = gipherService;
 	}
+	
+	@GetMapping("/api/v1/gipher/user/{userid}")
+	public ResponseEntity<?> getAllGipherByUserId(@PathVariable("userid") String userId) {
+		List<Gipher> giphers;
+		try {
+			giphers = gipherService.getAllGipherByUserId(userId);
+			return new ResponseEntity<>(giphers, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 	@GetMapping("/api/v1/gipher/{giferId}")
 	public ResponseEntity<?> getAllGipherById(@PathVariable("userid") String userId) {
@@ -38,8 +50,20 @@ public class GipherController {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
 	}
+	
+	@GetMapping("/api/v1/gipher")
+	public ResponseEntity<?> getAllGiphers() {
+		List<Gipher> giphers;
+		try {
+			giphers = gipherService.getAllGiphers();
+			return new ResponseEntity<>(giphers, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 
 	@PostMapping("/api/v1/gipher")
 	public ResponseEntity<?> createGipher(@RequestBody Gipher gipher) {

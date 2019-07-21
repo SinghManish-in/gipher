@@ -10,7 +10,7 @@ public interface GipherService {
 
 	    boolean createGipher(Gipher Gipher);
 
-	    boolean deleteGipher(int gipherId);
+	    boolean deleteGipher(int gipherId) throws GipherNotFoundExeption;
 
 	    boolean deleteAllGiphers(String userId) throws GipherNotFoundExeption;
 
@@ -18,7 +18,13 @@ public interface GipherService {
 
 	    List<Gipher> getAllGipherByUserId(String userId) throws GipherNotFoundExeption;
 	    
-	    List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch);
+	    List<Gipher> getAllGipherByBookmark(String userId) throws GipherNotFoundExeption;
+	    
+	    List<Gipher> getAllGipherByFavorite(String userId) throws GipherNotFoundExeption;
+	    
+	    List<Gipher> getAllGiphers() throws GipherNotFoundExeption;
+	    
+	    List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) throws GipherNotFoundExeption;
 
 	}
 

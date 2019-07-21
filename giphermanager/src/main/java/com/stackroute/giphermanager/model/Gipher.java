@@ -12,17 +12,16 @@ public class Gipher {
 	private String embedURL;
 	private String bookMarkedBy;
 	private String favouriteBy;
-	private String createdBy;
+	private String userId;
 	
 	public Gipher(){}
 
-	public Gipher(int gipherId, String embedURL, String bookMarkedBy, String favouriteBy, String createdBy) {
-		super();
+	public Gipher(int gipherId, String embedURL, String bookMarkedBy, String favouriteBy, String userId) {
 		this.gipherId = gipherId;
 		this.embedURL = embedURL;
 		this.bookMarkedBy = bookMarkedBy;
 		this.favouriteBy = favouriteBy;
-		this.createdBy = createdBy;
+		this.userId = userId;
 	}
 
 	public int getGipherId() {
@@ -57,15 +56,11 @@ public class Gipher {
 		this.favouriteBy = favouriteBy;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-	
-	
-	
-	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}	
 }

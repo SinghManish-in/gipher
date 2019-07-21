@@ -16,7 +16,16 @@ public class GipherServiceImpl implements GipherService {
 	@Autowired
 	GipherRepository gipherRepository;
 	
-
+	@Override
+	public List<Gipher> getAllGiphers() throws GipherNotFoundExeption {
+		return gipherRepository.findAll();
+	}
+	
+	@Override
+	public List<Gipher> getAllGipherByUserId(String userId) throws GipherNotFoundExeption {
+		return gipherRepository.getAllGipherByUserId(userId);
+	}
+	
 	@Override
 	public boolean createGipher(Gipher gipher) {
 		if(null != gipherRepository.save(gipher)) {
@@ -26,9 +35,8 @@ public class GipherServiceImpl implements GipherService {
 		}
 	}
 
-
 	@Override
-	public boolean deleteGipher(int gipherId) {
+	public boolean deleteGipher(int gipherId) throws GipherNotFoundExeption{
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -49,16 +57,20 @@ public class GipherServiceImpl implements GipherService {
 
 
 	@Override
-	public List<Gipher> getAllGipherByUserId(String userId) throws GipherNotFoundExeption {
+	public List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) throws GipherNotFoundExeption{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	@Override
-	public List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) {
+	public List<Gipher> getAllGipherByBookmark(String userId) throws GipherNotFoundExeption {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public List<Gipher> getAllGipherByFavorite(String userId) throws GipherNotFoundExeption {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
