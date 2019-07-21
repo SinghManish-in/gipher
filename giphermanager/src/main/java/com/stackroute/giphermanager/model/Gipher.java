@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Gipher {
 	
 	@Id
-	private int gipherId;
+	private String gipherId;
 	private String embedURL;
 	private String bookMarkedBy;
 	private String favouritedBy;
@@ -16,7 +16,7 @@ public class Gipher {
 	
 	public Gipher(){}
 
-	public Gipher(int gipherId, String embedURL, String bookMarkedBy, String favouritedBy, String userId) {
+	public Gipher(String gipherId, String embedURL, String bookMarkedBy, String favouritedBy, String userId) {
 		this.gipherId = gipherId;
 		this.embedURL = embedURL;
 		this.bookMarkedBy = bookMarkedBy;
@@ -24,11 +24,11 @@ public class Gipher {
 		this.userId = userId;
 	}
 
-	public int getGipherId() {
+	public String getGipherId() {
 		return gipherId;
 	}
 
-	public void setGipherId(int gipherId) {
+	public void setGipherId(String gipherId) {
 		this.gipherId = gipherId;
 	}
 

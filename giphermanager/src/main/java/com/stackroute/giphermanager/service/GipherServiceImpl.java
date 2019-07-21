@@ -58,13 +58,7 @@ public class GipherServiceImpl implements GipherService {
 	public List<Gipher> getGipherFromExternalAPI(String query) throws GipherNotFoundExeption{
 		GipherHelper helper = new GipherHelper();
 		List<Gipher> giphers = helper.getGipherFromExternalAPI(query);
-		for(Gipher gipher : giphers) {
-			System.out.println("----------------------");
-			System.out.println(gipher.getUserId());
-			System.out.println(gipher.getEmbedURL());
-			System.out.println(gipher.getFavouritedBy());
-			System.out.println("----------------------");
-		}
+		
 		return giphers;
 	}
 
