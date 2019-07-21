@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.stackroute.giphermanager.exception.GipherNotFoundExeption;
 import com.stackroute.giphermanager.helper.GipherHelper;
 import com.stackroute.giphermanager.model.Gipher;
-import com.stackroute.giphermanager.model.GipherSearch;
 import com.stackroute.giphermanager.repository.GipherRepository;
 
 @Service
@@ -16,6 +15,9 @@ public class GipherServiceImpl implements GipherService {
 	
 	@Autowired
 	GipherRepository gipherRepository;
+	
+	@Autowired
+	GipherHelper gipherHelper;
 	
 	@Override
 	public List<Gipher> getAllGiphers() throws GipherNotFoundExeption {
@@ -47,19 +49,9 @@ public class GipherServiceImpl implements GipherService {
 		gipherRepository.deleteAll();
 	}
 
-
 	@Override
 	public Gipher updateGipher(Gipher gipher) throws GipherNotFoundExeption {
 		return gipherRepository.save(gipher);
-	}
-
-
-	@Override
-	public List<Gipher> getGipherFromExternalAPI(String userId,String query) throws GipherNotFoundExeption{
-		GipherHelper helper = new GipherHelper();
-		List<Gipher> giphers = helper.getGipherFromExternalAPI(userId,query);
-		
-		return giphers;
 	}
 
 	@Override
@@ -70,5 +62,10 @@ public class GipherServiceImpl implements GipherService {
 	@Override
 	public List<Gipher> getAllGipherByFavorite(String favoritedBy) throws GipherNotFoundExeption {
 		return gipherRepository.getAllGipherByBookmark(favoritedBy);
+	}
+	
+	@Override
+	public List<Gipher> getGipherFromExternalAPI(String userId,String query) throws GipherNotFoundExeption{	
+		return gipherHelper.getGipherFromExternalAPI(userId,query);
 	}
 }

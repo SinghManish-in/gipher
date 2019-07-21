@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.stackroute.giphermanager.exception.GipherNotFoundExeption;
 import com.stackroute.giphermanager.model.Gipher;
-import com.stackroute.giphermanager.model.GipherSearch;
 
 public interface GipherService {
 

@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
@@ -18,6 +19,7 @@ import com.stackroute.giphermanager.external.model.GipherExternal;
 import com.stackroute.giphermanager.model.Gipher;
 
 @SuppressWarnings("unchecked")
+@Component
 public class GipherHelper {
 	
 	String api_key = "T31ikSprcGov7jizTYF0hp7M8vMYYuNX";
