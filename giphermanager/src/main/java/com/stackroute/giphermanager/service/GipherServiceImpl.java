@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.giphermanager.exception.GipherNotFoundExeption;
+import com.stackroute.giphermanager.helper.GipherHelper;
 import com.stackroute.giphermanager.model.Gipher;
 import com.stackroute.giphermanager.model.GipherSearch;
 import com.stackroute.giphermanager.repository.GipherRepository;
@@ -54,9 +55,9 @@ public class GipherServiceImpl implements GipherService {
 
 
 	@Override
-	public List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) throws GipherNotFoundExeption{
-		// TODO Auto-generated method stub
-		return null;
+	public List<Gipher> getGipherFromExternalAPI(String query) throws GipherNotFoundExeption{
+		GipherHelper helper = new GipherHelper();
+		return helper.getGipherFromExternalAPI(query);
 	}
 
 	@Override

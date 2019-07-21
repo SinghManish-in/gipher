@@ -24,7 +24,7 @@ public interface GipherService {
 	    
 	    List<Gipher> getAllGiphers() throws GipherNotFoundExeption;
 	    
-	    List<Gipher> getGipherFromExternalAPI(GipherSearch gipherSearch) throws GipherNotFoundExeption;
+	    List<Gipher> getGipherFromExternalAPI(String query) throws GipherNotFoundExeption;
 
 	}
 
