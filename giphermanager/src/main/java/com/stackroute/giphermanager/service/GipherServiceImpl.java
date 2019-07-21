@@ -1,5 +1,6 @@
 package com.stackroute.giphermanager.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,9 @@ public class GipherServiceImpl implements GipherService {
 	
 	@Override
 	public List<Gipher> getGipherFromExternalAPI(String userId,String query) throws GipherNotFoundExeption{	
-		return gipherHelper.getGipherFromExternalAPI(userId,query);
+		List<Gipher> savedGiphers = new ArrayList<Gipher>();
+		for(Gipher gipher : gipherHelper.getGipherFromExternalAPI(userId,query))
+			savedGiphers.add(gipherRepository.save(gipher));
+		return savedGiphers;
 	}
 }
