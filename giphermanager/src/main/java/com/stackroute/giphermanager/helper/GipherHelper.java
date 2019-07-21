@@ -19,9 +19,11 @@ import com.stackroute.giphermanager.model.Gipher;
 
 @SuppressWarnings("unchecked")
 public class GipherHelper {
+	
 	String api_key = "T31ikSprcGov7jizTYF0hp7M8vMYYuNX";
 	String baseurl = "https://api.giphy.com/v1/gifs/search?api_key={0}&q={1}&limit=5&offset=0&rating=G&lang=en";
-	public List<Gipher> getGipherFromExternalAPI(String query) {	 
+	
+	public List<Gipher> getGipherFromExternalAPI(String userId,String query) {	 
 	    Type listOfGipherExternal = new TypeToken<ArrayList<GipherExternal>>(){}.getType();
 	    Gson gson = new Gson();
 		RestTemplate restTemplate = new RestTemplate();
@@ -30,13 +32,14 @@ public class GipherHelper {
 				});
 		JsonObject jsonObject = new JsonParser().parse(response.getBody()).getAsJsonObject();
 		List<GipherExternal> gipherExternal = (List<GipherExternal>) gson.fromJson(jsonObject.get("data").toString(), listOfGipherExternal);	
-		return getGipherFromGipherExternal(gipherExternal);
+		return getGipherFromGipherExternal(userId,gipherExternal);
 	}
 	
-	private List<Gipher> getGipherFromGipherExternal(List<GipherExternal> giphersExternal){
+	private List<Gipher> getGipherFromGipherExternal(String userId,List<GipherExternal> giphersExternal){
 		List<Gipher> giphers = new ArrayList<Gipher>();
 		for(GipherExternal gipherExternal : giphersExternal) {
 			Gipher gipher = new Gipher();
+			gipher.setUserId(userId);
 			gipher.setGipherId(gipherExternal.getId());
 			gipher.setEmbedURL(gipherExternal.getEmbed_url());
 			giphers.add(gipher);

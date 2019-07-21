@@ -55,9 +55,9 @@ public class GipherServiceImpl implements GipherService {
 
 
 	@Override
-	public List<Gipher> getGipherFromExternalAPI(String query) throws GipherNotFoundExeption{
+	public List<Gipher> getGipherFromExternalAPI(String userId,String query) throws GipherNotFoundExeption{
 		GipherHelper helper = new GipherHelper();
-		List<Gipher> giphers = helper.getGipherFromExternalAPI(query);
+		List<Gipher> giphers = helper.getGipherFromExternalAPI(userId,query);
 		
 		return giphers;
 	}

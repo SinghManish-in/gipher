@@ -28,11 +28,11 @@ public class GipherController {
 		this.gipherService = gipherService;
 	}
 	
-	@GetMapping("/api/v1/gipher/externalapi/{query}")
-	public ResponseEntity<?> getGiphersFromExternalAPI(@PathVariable("query") String query) {
+	@GetMapping("/api/v1/gipher/externalapi/{userId}/{query}")
+	public ResponseEntity<?> getGiphersFromExternalAPI(@PathVariable("userId") String userId,@PathVariable("query") String query) {
 		List<Gipher> giphers;
 		try {
-			giphers = gipherService.getGipherFromExternalAPI(query);
+			giphers = gipherService.getGipherFromExternalAPI(userId,query);
 			return new ResponseEntity<>(giphers, HttpStatus.OK);
 		} catch (GipherNotFoundExeption e) {
 			e.printStackTrace();
