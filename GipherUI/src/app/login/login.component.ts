@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from '../service/authentication.service';
 import { User } from '../model/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
