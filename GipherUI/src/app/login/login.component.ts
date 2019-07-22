@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(): void {
-    alert("login");
+    alert(this.user.userId+" login "+this.user.userPassword);
   //   this.authenticationService.isAuthenticated(this.user).subscribe(
   //     data => {
   //       if(data)

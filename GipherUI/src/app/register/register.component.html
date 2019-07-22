@@ -1,3 +1,49 @@
-<p>
-  register works!
-</p>
+<div class="register">
+  <br>
+  <div class="row">
+
+    <div class="col-md-6"></div>
+    <div class="col-md-4 horizontalFormSpacer">
+      <input #email type="text" class="form-control input-sm" placeholder="First Name" 
+      [(ngModel)]="user.firstName" >
+    </div>
+    <div class="col-md-2"></div>
+
+    <div class="col-md-6"></div>
+    <div class="col-md-4 horizontalFormSpacer">
+      <input #email type="text" class="form-control input-sm" placeholder="Last Name" 
+      [(ngModel)]="user.lastName" >
+    </div>
+    <div class="col-md-2"></div>
+
+    <div class="col-md-6"></div>
+    <div class="col-md-4 horizontalFormSpacer">
+      <input #email type="text" class="form-control input-sm" placeholder="User Role" 
+      [(ngModel)]="user.userRole" >
+    </div>
+    <div class="col-md-2"></div>
+
+    <div class="col-md-6"></div>
+    <div class="col-md-4 horizontalFormSpacer">
+      <input #email type="text" class="form-control input-sm" placeholder="User Id" 
+      [(ngModel)]="user.userId" >
+    </div>
+    <div class="col-md-2"></div>
+
+    <div class="col-md-6"></div>
+    <div class="col-md-4 horizontalFormSpacer">
+      <input #email type="text" class="form-control input-sm" placeholder="Password" 
+      [(ngModel)]="user.userPassword" >
+    </div>
+    <div class="col-md-2"></div>
+
+    <div class="col-md-6"></div>
+    <div class="col-md-4">
+      <B>
+        <button class="input-sm registerButton" (click)=register()>Create Account</button>
+      </B>
+    </div>
+    <div class="col-md-2"></div>
+
+  </div>
+</div>
