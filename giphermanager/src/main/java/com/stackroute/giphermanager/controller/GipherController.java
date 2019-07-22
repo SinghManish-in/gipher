@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,64 @@ public class GipherController {
 
 	public GipherController(GipherService gipherService) {
 		this.gipherService = gipherService;
+	}
+	
+	@GetMapping("/api/v1/gipher/{giferId}")
+	public ResponseEntity<?> getAllGipherById(@PathVariable("userid") String userId) {
+		List<Gipher> giphers;
+		try {
+			giphers = gipherService.getAllGipherByUserId(userId);
+			return new ResponseEntity<>(giphers, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping("/api/v1/gipher")
+	public ResponseEntity<?> getAllGiphers() {
+		List<Gipher> giphers;
+		try {
+			giphers = gipherService.getAllGiphers();
+			return new ResponseEntity<>(giphers, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+
+	@PostMapping("/api/v1/gipher")
+	public ResponseEntity<?> createGipher(@RequestBody Gipher gipher) {
+		boolean flag = gipherService.createGipher(gipher);
+		if (flag) {
+			return new ResponseEntity<>(gipher, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
+	}
+
+	@PutMapping("/api/v1/gipher")
+	public ResponseEntity<?> updateGipher(Gipher gipher) {
+		Gipher updateGipher = null;
+		try {
+			updateGipher = gipherService.updateGipher(gipher);
+			return new ResponseEntity<>(updateGipher, HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@DeleteMapping("/api/v1/gipher/{gipherId}")
+	public ResponseEntity<?> deleteGipher(@PathVariable("gipherId") String gipherId) {
+		try {
+			gipherService.deleteGipher(gipherId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (GipherNotFoundExeption e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@GetMapping("/api/v1/gipher/externalapi/{userId}/{query}")
@@ -76,50 +135,5 @@ public class GipherController {
 		}
 	}
 
-	@GetMapping("/api/v1/gipher/{giferId}")
-	public ResponseEntity<?> getAllGipherById(@PathVariable("userid") String userId) {
-		List<Gipher> giphers;
-		try {
-			giphers = gipherService.getAllGipherByUserId(userId);
-			return new ResponseEntity<>(giphers, HttpStatus.OK);
-		} catch (GipherNotFoundExeption e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 	
-	@GetMapping("/api/v1/gipher")
-	public ResponseEntity<?> getAllGiphers() {
-		List<Gipher> giphers;
-		try {
-			giphers = gipherService.getAllGiphers();
-			return new ResponseEntity<>(giphers, HttpStatus.OK);
-		} catch (GipherNotFoundExeption e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-
-
-	@PostMapping("/api/v1/gipher")
-	public ResponseEntity<?> createGipher(@RequestBody Gipher gipher) {
-		boolean flag = gipherService.createGipher(gipher);
-		if (flag) {
-			return new ResponseEntity<>(gipher, HttpStatus.CREATED);
-		} else {
-			return new ResponseEntity<>(HttpStatus.CONFLICT);
-		}
-	}
-
-	@PutMapping("/api/v1/gipher")
-	public ResponseEntity<?> updateGipher(Gipher gipher) {
-		Gipher updateGipher = null;
-		try {
-			updateGipher = gipherService.updateGipher(gipher);
-			return new ResponseEntity<>(updateGipher, HttpStatus.OK);
-		} catch (GipherNotFoundExeption e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 }
