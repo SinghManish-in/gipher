@@ -1,0 +1,38 @@
+.loginHeader {
+    background-color: #1F3D7A;
+    color: white;
+    line-height: 20px;
+  }
+  
+  .loginButton {
+    background-color: #1F3D7A;
+    color: white;
+    padding: 1px 1px;
+    margin: 1px 1px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    display: inline;
+    cursor: pointer;
+  }
+  
+  .form-fixer {
+    padding: 1px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .horizontalFormSpacer{
+    margin-bottom: 10px;
+  }
+  
+  .whiteHyperLink {
+  color: white !important;
+  }
+  
+  .center{
+  margin-left: 400px;
+  margin-top: 200px;
+  }
+  
+  
