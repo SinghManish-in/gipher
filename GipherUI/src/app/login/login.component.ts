@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../service/authentication.service';
+import { User } from '../model/user.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService,private user:User,private route: ActivatedRoute, private router: Router){
+  }
 
-  ngOnInit() {
+  logIn(): void {
+    alert("login");
+  //   this.authenticationService.isAuthenticated(this.user).subscribe(
+  //     data => {
+  //       if(data)
+  //       this.router.navigate(['/home']);
+  //     },
+  //     error => {
+  //       console.error("Error in Authenticating User!");
+  //       return Observable.throw(error);
+  //     }
+  //  );
+    }
+  ngOnInit():  void {
   }
 
 }
