@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     userRole: new FormControl('', [Validators.required])
   });
 
-  register() {
+  Submit() {
     this.submitted = true;
     console.log(this.RegisterForm.value);
     this.authenticationService.registerUser(this.RegisterForm.value).subscribe(
@@ -40,6 +40,59 @@ export class RegisterComponent implements OnInit {
 
   }
   ngOnInit() {
+  }
+
+  usernamehaserror() {
+    return this.userId.hasError('required') ? true : false;
+  }
+  passwordhaserror() {
+    return this.userPassword.hasError('minlength') ? true : false;
+  }
+  firstnamehaserror() {
+    return this.firstName.hasError('required') ? true : false;
+  }
+  lastnamehaserror() {
+    return this.lastName.hasError('required') ? true : false;
+  }
+  userrolehaserror() {
+    return this.userRole.hasError('required') ? true : false;
+  }
+  
+  get userId(){
+    return this.RegisterForm.get('userId');
+  }
+  get userPassword(){
+    return this.RegisterForm.get('userPassword');
+  }
+
+  set userId(username){
+    this.userId.setValue(username);
+  }
+
+  set userPassword(password){
+    this.userPassword.setValue(password);
+  }
+  get firstName(){
+    return this.RegisterForm.get('firstName');
+  }
+  get lastName(){
+    return this.RegisterForm.get('lastName');
+  }
+
+  set firstName(firstName){
+    this.userId.setValue(firstName);
+  }
+
+  set lastName(lastName){
+    this.userPassword.setValue(lastName);
+  }
+  
+  get userRole(){
+    return this.RegisterForm.get('userRole');
+  }
+
+  set userRole(userRole){
+    this.userId.setValue(userRole);
   }
 
 }
