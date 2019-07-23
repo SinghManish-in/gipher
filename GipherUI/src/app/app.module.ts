@@ -13,6 +13,41 @@ import { RouterService } from './service/router.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CanActivateRouteGuard } from './can-activate-route.guard';
+
+const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [CanActivateRouteGuard],
+    children: [
+      {
+        path: 'view/bookmarkview',
+        component: BookmarkComponent
+      },
+      {
+        path: 'view/favouriteView',
+        component: FavouriteComponent,
+      },
+      
+    ]
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -20,7 +55,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     BookmarkComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
