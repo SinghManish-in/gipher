@@ -1,56 +1,32 @@
-<div class="row loginHeader">
-
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-
-        <div class="col-md-6"></div>
-        <div class="col-md-2">
-                <input type="text" class="form-control input-sm" 
-                placeholder="UserId" [(ngModel)]="user.userId">
+<strong *ngIf="submitMessage" class="error-message">{{submitMessage}}</strong>
+<div class="jumbotron">
+    <div class="container">
+        <div class ="row">
+            <div class="col-sm-4">
+                <form (ngSubmit)="loginSubmit()" [formGroup]="loginForm">
+                    <div>
+                        <label for="userId">User Name</label>
+                        <input type="text"  class="form-control" [ngClass]="{'is-invalid': submitted && usernamehaserror()}"  formControlName="userId"/>
+                        <div *ngIf = "submitted && usernamehaserror()" class="invalid-feedback">
+                           <div *ngIf = "submitted && usernamehaserror()">Username is required</div> 
+                        </div>
+                        </div>
+                        <br>
+                       <div>
+                        <label for="userPassword">Password</label>
+                        <input type="password" class="form-control" [ngClass]="{'is-invalid': submitted && passwordhaserrorminlength()}" formControlName="userPassword"/>
+                        <div *ngIf = "submitted && passwordhaserrorminlength()" class="invalid-feedback">
+                            <div *ngIf = "submitted && passwordhaserrorminlength()">Password is required and must be minimum 5 character</div> 
+                         </div>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" [disabled] = "!loginForm.valid" mat-button>Login</button>
+                        <a routerLink="/register" class="btn btn-link">Register</a>
+                    </div>
+                </form>
+                
+            </div>
         </div>
-        <div class="col-md-2">
-                <input type="password" class="form-control input-sm" 
-                placeholder="Password" [(ngModel)]="user.userPassword">
-        </div>
-        <div class="loginButton">
-                <B>
-                        <button class="form-control input-sm loginButton" (click)=logIn()>
-                                <B>Log In</B>
-                        </button>
-                </B>
-        </div>
-        <div class="col-md-2"></div>
-
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
-        <div class="col-md-12"></div>
+    </div>
 </div>
-
-<app-register></app-register>

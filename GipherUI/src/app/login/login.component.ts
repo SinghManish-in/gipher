@@ -1,34 +1,72 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AuthenticationService } from '../service/authentication.service';
-import { User } from '../model/user.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouterService } from '../service/router.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  submitMessage: String = '';
+  submitted : Boolean = false;
+  constructor(private authenticationService: AuthenticationService, private routerService:  RouterService) {}
 
-  constructor(private authenticationService: AuthenticationService,private user:User,private route: ActivatedRoute, private router: Router){
-  }
+  loginForm = new FormGroup ({
+    userId : new FormControl('', [Validators.required]),
+    userPassword : new FormControl('', [Validators.required, Validators.minLength(4)])
+  });
 
-  logIn(): void {
-    alert(this.user.userId+" login "+this.user.userPassword);
-  //   this.authenticationService.isAuthenticated(this.user).subscribe(
-  //     data => {
-  //       if(data)
-  //       this.router.navigate(['/home']);
-  //     },
-  //     error => {
-  //       console.error("Error in Authenticating User!");
-  //       return Observable.throw(error);
-  //     }
-  //  );
+    loginSubmit() {
+      this.submitted = true;
+      const userId = this.loginForm.value.userId;
+      this.authenticationService.authenticateUser(this.loginForm.value).subscribe(
+        data => {
+          console.log(data['token']);
+          this.authenticationService.setBearerToken(data['token']);
+          this.authenticationService.setUserId(userId);
+          this.routerService.routeToDashboard();
+        }, err => {
+          console.log(err);
+          if (err.status === 403) {
+            this.submitMessage = err.error.message;
+          } else if (err.status === 404) {
+            this.submitMessage = err.message;
+          }
+        }
+      );
+
     }
-  ngOnInit():  void {
-  }
+    usernamehaserror() {
+      return this.userId.hasError('required') ? true : false;
+    }
+    passwordhaserror() {
+      return this.userPassword.hasError('required') ? true : false;
+    }
 
+    passwordhaserrorminlength() {
+      return this.userPassword.hasError('minlength') ? true : false;
+    }
+
+    get userId() {
+      return this.loginForm.get('userId');
+    }
+    get userPassword() {
+      return this.loginForm.get('userPassword');
+    }
+
+    set userId(username) {
+      this.userId.setValue(username);
+    }
+
+    set userPassword(password) {
+      this.userPassword.setValue(password);
+    }
+
+    get lf() {
+      return this.loginForm.controls;
+    }
 }

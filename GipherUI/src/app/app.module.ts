@@ -7,12 +7,12 @@ import { RegisterComponent } from './register/register.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { User } from './model/user.model';
+import { LoginUser } from './model/loginUser.model';
 import { AuthenticationService } from './service/authentication.service';
-import { FormsModule } from '@angular/forms';
+import { RouterService } from './service/router.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,10 +26,11 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule
   ],
-  providers: [User,AuthenticationService],
+  providers: [RouterService,AuthenticationService,User,LoginUser],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

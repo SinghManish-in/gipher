@@ -1,49 +1,57 @@
-<div class="register">
-  <br>
-  <div class="row">
-
-    <div class="col-md-6"></div>
-    <div class="col-md-4 horizontalFormSpacer">
-      <input #email type="text" class="form-control input-sm" placeholder="First Name" 
-      [(ngModel)]="user.firstName" >
+<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Register User</h1>
+          <strong *ngIf="submitMessage" class="error-message">{{submitMessage}}</strong>
+          <strong *ngIf="submitSuccessMessage" class="success-message">{{submitSuccessMessage}}</strong>
+          <form (ngSubmit)="Submit()" [formGroup]="RegisterForm">
+            <div>
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && firstnamehaserror()}" formControlName="firstName"
+              />
+              <div *ngIf="submitted && firstnamehaserror()" class="invalid-feedback">
+                First name is required
+              </div>
+            </div>
+            <div>
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && lastnamehaserror()}" formControlName="lastName"
+              />
+              <div *ngIf="submitted && lastnamehaserror()" class="invalid-feedback">
+                Last name is required
+              </div>
+            </div>
+            <div>
+              <label for="userId">User Id</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && usernamehaserror()}" formControlName="userId"
+              />
+              <div *ngIf="submitted && usernamehaserror()" class="invalid-feedback">
+                User id is required
+              </div>
+            </div>
+            <div>
+              <label for="userPassword">Password</label>
+              <input type="password" class="form-control" [ngClass]="{'is-invalid': submitted && passwordhaserror()}" formControlName="userPassword"
+              />
+              <div *ngIf="submitted && passwordhaserror()" class="invalid-feedback">
+                Password is required
+              </div>
+            </div>
+            <div>
+              <label for="userRole">user Role</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && userrolehaserror()}" formControlName="userRole"
+              />
+              <div *ngIf="submitted && userrolehaserror()" class="invalid-feedback">
+                User role is required
+              </div>
+            </div>
+            <div>
+              <button type="submit" [disabled]="!RegisterForm.valid" mat-button>Submit</button>
+              <a routerLink="/login" class="btn btn-link">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-6"></div>
-    <div class="col-md-4 horizontalFormSpacer">
-      <input #email type="text" class="form-control input-sm" placeholder="Last Name" 
-      [(ngModel)]="user.lastName" >
-    </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-6"></div>
-    <div class="col-md-4 horizontalFormSpacer">
-      <input #email type="text" class="form-control input-sm" placeholder="User Role" 
-      [(ngModel)]="user.userRole" >
-    </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-6"></div>
-    <div class="col-md-4 horizontalFormSpacer">
-      <input #email type="text" class="form-control input-sm" placeholder="User Id" 
-      [(ngModel)]="user.userId" >
-    </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-6"></div>
-    <div class="col-md-4 horizontalFormSpacer">
-      <input #email type="text" class="form-control input-sm" placeholder="Password" 
-      [(ngModel)]="user.userPassword" >
-    </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-6"></div>
-    <div class="col-md-4">
-      <B>
-        <button class="input-sm registerButton" (click)=register()>Create Account</button>
-      </B>
-    </div>
-    <div class="col-md-2"></div>
-
   </div>
-</div>

@@ -15,12 +15,12 @@ export class AuthenticationService {
     this.isLoggedInSubject = new BehaviorSubject(this.isLoggedIn);
   }
 
-  authenticateUser(data) {
-    return this.httpclient.post('http://localhost:8089/api/v1/auth/login', data);
-  }
-
   registerUser(data) {
     return this.httpclient.post('http://localhost:8089/api/v1/auth/register', data);
+  }
+
+  authenticateUser(data) {
+    return this.httpclient.post('http://localhost:8089/api/v1/auth/login', data);
   }
 
   setBearerToken(token) {
