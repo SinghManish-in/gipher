@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { AuthenticationService } from './service/authentication.service';
 import { RouterService } from './service/router.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CanActivateRouteGuard } from './can-activate-route.guard';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   {
@@ -31,11 +33,11 @@ const appRoutes: Routes = [
     canActivate: [CanActivateRouteGuard],
     children: [
       {
-        path: 'view/bookmarkview',
+        path: 'dashboard/bookmarkview',
         component: BookmarkComponent
       },
       {
-        path: 'view/favouriteView',
+        path: 'dashboard/favouriteView',
         component: FavouriteComponent,
       },
     ]
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     BookmarkComponent,
     FavouriteComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
+    MatToolbarModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RouterService,AuthenticationService,User,CanActivateRouteGuard],

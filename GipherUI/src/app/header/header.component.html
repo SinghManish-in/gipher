@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">KeepNote
+    <div *ngIf="isUserLoggedIn()" class="keep-c-logout">
+      <div (click)="toroute()" class="keep-c-toggle-view">
+        <i *ngIf="isNoteView" class="material-icons switchToListView">view_list</i>
+        <i *ngIf="!isNoteView" class="material-icons switchToNoteView">view_quilt</i>
+      </div>
+      <button type="button" (click)="logout()" class="mat-button">Logout</button>
+    </div>
+  </mat-toolbar>
+  

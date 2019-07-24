@@ -1,0 +1,18 @@
+.keep-c-logout {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-end;
+}
+.button{
+	cursor: pointer;
+}
+.button:hover {
+	background-color: antiquewhite;
+}
+.floatRight{
+	float:right;
+}
+.keep-c-toggle-view{
+	padding-top: 0.5em;
+}

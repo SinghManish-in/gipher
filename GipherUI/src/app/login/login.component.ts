@@ -35,6 +35,8 @@ export class LoginComponent {
             this.submitMessage = err.error.message;
           } else if (err.status === 404) {
             this.submitMessage = err.message;
+          }else if(err.status === 401){
+            this.submitMessage = "Invalid username password";
           }
         }
       );
