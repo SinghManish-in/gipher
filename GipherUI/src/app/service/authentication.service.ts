@@ -24,6 +24,7 @@ export class AuthenticationService {
   }
 
   setBearerToken(token) {
+    console.log("----:"+token)
     localStorage.setItem('bearerToken', token);
   }
 
@@ -41,7 +42,6 @@ export class AuthenticationService {
 
   isUserAuthenticated(token): Promise<boolean> {
     if (null != token) {
-
       const obs: Observable<any> = this.httpclient.post('http://localhost:8089/api/v1/auth/authenticate', {}, {
         headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
       });
@@ -51,6 +51,9 @@ export class AuthenticationService {
         this.isLoggedInSubject.next(this.isLoggedIn);
         return response['isAuthenticated'];
       })).toPromise();
+    }
+    else{
+      return Promise.resolve(false);
     }
   }
 
