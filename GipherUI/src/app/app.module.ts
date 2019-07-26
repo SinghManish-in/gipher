@@ -43,16 +43,16 @@ const appRoutes: Routes = [
     canActivate: [CanActivateRouteGuard],
     children: [
       {
-        path: 'view/gipher',
+        path: 'gipher',
         component: GipherViewComponent
       },
       {
-        path: 'view/bookmark',
+        path: 'bookmark',
         component: BookmarkComponent,
         outlet : 'bookmark'
       },
       {
-        path: 'view/favourite',
+        path: 'favourite',
         component: FavouriteComponent,
         outlet : 'favourite'
       },

@@ -18,23 +18,24 @@ export class RouterService {
 
   routeToGipherView() {
     console.log("routeToGipherView");
-      this.router.navigate(['dashboard/view/gipher']);
+      this.router.navigate(['dashboard/gipher']);
   }
 
   routeToBookmarkView() {
     console.log("routeToBookmarkView");
-      this.router.navigate(['dashboard/view/bookmark',{
+      this.router.navigate(['dashboard',
+      {
         outlets: {
-          bookmark: []
+          bookmark: ['bookmark']
         }
-      }]);
+      }])
   }
 
   routeToFavouriteView() {
     console.log("routeToFavouriteView");
-      this.router.navigate(['dashboard/view/favourite',{
+      this.router.navigate(['dashboard',{
         outlets: {
-          favourite: []
+          favourite: ['favourite']
         }
       }]);
   }
