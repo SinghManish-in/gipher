@@ -23,13 +23,14 @@ import com.stackroute.giphermanager.model.Gipher;
 public class GipherHelper {
 	
 	String api_key = "T31ikSprcGov7jizTYF0hp7M8vMYYuNX";
-	String baseurl = "https://api.giphy.com/v1/gifs/search?api_key={0}&q={1}&limit=5&offset=0&rating=G&lang=en";
+	String limit = "5";
+	String baseurl = "https://api.giphy.com/v1/gifs/search?api_key={0}&q={1}&limit={2}&offset=0&rating=G&lang=en";
 	
 	public List<Gipher> getGipherFromExternalAPI(String userId,String query) {	 
 	    Type listOfGipherExternal = new TypeToken<ArrayList<GipherExternal>>(){}.getType();
 	    Gson gson = new Gson();
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> response = restTemplate.exchange(MessageFormat.format(baseurl, api_key, query), HttpMethod.GET,
+		ResponseEntity<String> response = restTemplate.exchange(MessageFormat.format(baseurl, api_key, query, limit), HttpMethod.GET,
 				null, new ParameterizedTypeReference<String>() {
 				});
 		JsonObject jsonObject = new JsonParser().parse(response.getBody()).getAsJsonObject();
