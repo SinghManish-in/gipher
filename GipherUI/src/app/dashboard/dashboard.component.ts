@@ -5,7 +5,7 @@ import { Gipher } from '../model/gipher.model';
 import { GipherService } from '../service/gipher.service';
 import { RouterService } from '../service/router.service';
 import { Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,32 +17,39 @@ export class DashboardComponent implements OnInit {
   submitMessage: String = '';
   submitted : Boolean = false;
   giphers: Array<Gipher>;
-  constructor(private gipherService: GipherService, private routerService: RouterService) {}
+  safe : SafeResourceUrl;
+  constructor(private gipherService: GipherService, private routerService: RouterService,private sanitizer: DomSanitizer) {}
 
   searchForm = new FormGroup ({
     query : new FormControl('', [Validators.required])
   });
 
-  showBookmark(event: Event){
-    this.routerService.routeToBookmarkView();
+  showBookmark(gipherId:string){
+    //this.routerService.routeToBookmarkView();
+    console.log(gipherId);
   }
 
   showFavorite(event: Event){
     this.routerService.routeToFavouriteView();
   }
-  
+  getSantizeUrl(url:string){
+    console.log(url);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
   searchSubmit() {
     this.submitted = true;
     const query = this.searchForm.value.query;
     this.gipherService.fetchGiphersFromServer(query).subscribe(
       data => {
-      console.log(data);
-      this.routerService.routeToGipherView();
+      console.log(data+"-----"+this.safe);
+      this.giphers=data;
+      //this.giphers=this.getSafeData(data);
+      //this.routerService.routeToGipherView();
     }, err => {
       console.log(err);
     });
-
   }
+
   searchhashaserror() {
     return this.query.hasError('required') ? true : false;
   }

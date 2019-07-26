@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { MatListModule, MatMenuModule, MatRadioModule } from '@angular/material';
+import { MatListModule, MatMenuModule, MatRadioModule, MatTabsModule } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -94,7 +94,8 @@ const appRoutes: Routes = [
     MatListModule,
     MatMenuModule,
     MatRadioModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [RouterService,AuthenticationService,GipherService,User,CanActivateRouteGuard],
   bootstrap: [AppComponent]

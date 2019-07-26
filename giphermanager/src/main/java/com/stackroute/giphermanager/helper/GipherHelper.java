@@ -23,7 +23,7 @@ import com.stackroute.giphermanager.model.Gipher;
 public class GipherHelper {
 	
 	String api_key = "T31ikSprcGov7jizTYF0hp7M8vMYYuNX";
-	String limit = "5";
+	String limit = "15";
 	String baseurl = "https://api.giphy.com/v1/gifs/search?api_key={0}&q={1}&limit={2}&offset=0&rating=G&lang=en";
 	
 	public List<Gipher> getGipherFromExternalAPI(String userId,String query) {	 
