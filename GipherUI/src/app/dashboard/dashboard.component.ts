@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
     this.gipherService.fetchGiphersFromServer(query).subscribe(
       data => {
       console.log(data);
+      this.routerService.routeToGipherView();
     }, err => {
       console.log(err);
     });

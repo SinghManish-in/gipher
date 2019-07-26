@@ -5,21 +5,27 @@
       <div class="col-sm-4">
         <form (ngSubmit)="searchSubmit()" [formGroup]="searchForm">
           <div>
-            <label for="query">search GIF</label>
             <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && searchhashaserror()}"
               formControlName="query" />
             <div *ngIf="submitted && searchhashaserror()" class="invalid-feedback">
-              <div *ngIf="submitted && searchhashaserror()">Username is required</div>
+              <div *ngIf="submitted && searchhashaserror()">query is required</div>
             </div>
           </div>
           <br>
           <br>
           <div>
-            <button type="submit" [disabled]="!searchForm.valid" mat-button>Search GIF</button>
+            <button type="submit" [disabled]="!searchForm.valid" mat-button>Search</button>
           </div>
         </form>
 
       </div>
     </div>
+  </div>
+
+  <div class="container">
+       <router-outlet></router-outlet>
+      <router-outlet name="viewGipher"></router-outlet>
+      <router-outlet name="viewBookamrk"></router-outlet>
+      <router-outlet name="viewFavourite"></router-outlet>
   </div>
 </div>

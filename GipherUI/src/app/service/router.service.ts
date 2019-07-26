@@ -15,6 +15,11 @@ export class RouterService {
   routeToLogin() {
     this.router.navigate(['login']);
   }
+
+  routeToGipherView() {
+    console.log("routeToGipherView");
+      this.router.navigate(['dashboard/view/gipherView']);
+  }
   
   routeBack() {
     this.location.back();

@@ -26,6 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CanActivateRouteGuard } from './can-activate-route.guard';
 import { HeaderComponent } from './header/header.component';
 import {MatIconModule} from '@angular/material/icon';
+import { GipherViewComponent } from './gipher-view/gipher-view.component';
 
 const appRoutes: Routes = [
   {
@@ -42,23 +43,24 @@ const appRoutes: Routes = [
     canActivate: [CanActivateRouteGuard],
     children: [
       {
-        path: 'dashboard/bookmarkview',
-        component: BookmarkComponent
+        path: 'view/gipherView',
+        component: GipherViewComponent
       },
       {
-        path: 'dashboard/favouriteView',
+        path: 'view/bookmarkview',
+        component: BookmarkComponent,
+        outlet : 'viewBookamrk'
+      },
+      {
+        path: 'view/favouriteView',
         component: FavouriteComponent,
+        outlet : 'viewFavourite'
       },
     ]
   },
   {
     path: '',
     redirectTo: '/login',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
-    redirectTo: '/register',
     pathMatch: 'full'
   }
 ];
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     BookmarkComponent,
     FavouriteComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    GipherViewComponent
   ],
   imports: [
     BrowserModule,
