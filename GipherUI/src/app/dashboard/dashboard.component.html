@@ -17,10 +17,14 @@
             <button type="submit" [disabled]="!searchForm.valid" mat-button>Search</button>
           </div>
         </form>
-
       </div>
     </div>
   </div>
+
+  <div>
+      <button (click)="showBookmark($event)" type="button">show bookmarks</button>
+      <button (click)="showFavorite($event)" type="button">show favorites</button>
+    </div>
 
   <div class="container">
       <router-outlet></router-outlet>

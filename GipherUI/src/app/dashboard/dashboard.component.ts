@@ -22,6 +22,14 @@ export class DashboardComponent implements OnInit {
   searchForm = new FormGroup ({
     query : new FormControl('', [Validators.required])
   });
+
+  showBookmark(event: Event){
+    this.routerService.routeToBookmarkView();
+  }
+
+  showFavorite(event: Event){
+    this.routerService.routeToFavouriteView();
+  }
   
   searchSubmit() {
     this.submitted = true;
