@@ -18,9 +18,27 @@ export class RouterService {
 
   routeToGipherView() {
     console.log("routeToGipherView");
-      this.router.navigate(['dashboard/view/gipherView']);
+      this.router.navigate(['dashboard/view/gipher']);
   }
-  
+
+  routeToBookmarkView() {
+    console.log("routeToBookmarkView");
+      this.router.navigate(['dashboard/view/bookmark',{
+        outlets: {
+          bookmark: []
+        }
+      }]);
+  }
+
+  routeToFavouriteView() {
+    console.log("routeToFavouriteView");
+      this.router.navigate(['dashboard/view/favourite',{
+        outlets: {
+          favourite: []
+        }
+      }]);
+  }
+
   routeBack() {
     this.location.back();
   }
