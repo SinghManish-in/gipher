@@ -1,3 +1,25 @@
-<p>
-  dashboard works!
-</p>
+<strong *ngIf="searchMessage" class="error-message">{{searchMessage}}</strong>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <form (ngSubmit)="searchSubmit()" [formGroup]="searchForm">
+          <div>
+            <label for="query">search GIF</label>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && searchhashaserror()}"
+              formControlName="query" />
+            <div *ngIf="submitted && searchhashaserror()" class="invalid-feedback">
+              <div *ngIf="submitted && searchhashaserror()">Username is required</div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div>
+            <button type="submit" [disabled]="!searchForm.valid" mat-button>Search GIF</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

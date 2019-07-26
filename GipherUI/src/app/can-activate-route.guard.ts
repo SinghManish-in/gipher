@@ -18,7 +18,6 @@ export class CanActivateRouteGuard implements CanActivate {
       if (!authenticated) {
         this.routerservice.routeToLogin();
       }
-      console.log('value', authenticated);
       return authenticated;
     });
   }

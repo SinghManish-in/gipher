@@ -7,7 +7,7 @@ spring:
   
  
  application:
-    name: category-service
+    name: gipher-service
 server:
   port: 8088 
   

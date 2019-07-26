@@ -20,10 +20,12 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { User } from './model/user.model';
 import { AuthenticationService } from './service/authentication.service';
+import { GipherService } from './service/gipher.service';
 import { RouterService } from './service/router.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CanActivateRouteGuard } from './can-activate-route.guard';
 import { HeaderComponent } from './header/header.component';
+import {MatIconModule} from '@angular/material/icon';
 
 const appRoutes: Routes = [
   {
@@ -88,9 +90,10 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatListModule,
     MatMenuModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule
   ],
-  providers: [RouterService,AuthenticationService,User,CanActivateRouteGuard],
+  providers: [RouterService,AuthenticationService,GipherService,User,CanActivateRouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

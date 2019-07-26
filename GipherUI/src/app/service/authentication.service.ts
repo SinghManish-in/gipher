@@ -46,7 +46,6 @@ export class AuthenticationService {
         headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
       });
       return obs.pipe(map(response => {
-        console.log('inside Auth Service', response);
         this.isLoggedIn = response['isAuthenticated'];
         this.isLoggedInSubject.next(this.isLoggedIn);
         return response['isAuthenticated'];
