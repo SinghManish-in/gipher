@@ -20,7 +20,6 @@ export class BookmarkComponent implements OnInit {
     this.gipherService.fetchBookmarkedGipher(this.authenticationService.getUserId()).subscribe(
       data => {
         this.giphers = data;
-        console.log(data.length+" data bookmark " + data[0].bookMarkedBy);
       }, err => {
         console.log(err);
       });

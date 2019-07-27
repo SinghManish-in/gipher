@@ -21,7 +21,6 @@ export class FavouriteComponent implements OnInit {
     this.gipherService.fetchFavouriteGipher(this.authenticationService.getUserId()).subscribe(
       data => {
         this.giphers = data;
-        console.log(data.length+" data Favourite " + data[0].favouritedBy);
       }, err => {
         console.log(err);
       });

@@ -58,6 +58,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('bearerToken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('query');
     this.isLoggedInSubject.next(false);
   }
 

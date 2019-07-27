@@ -16,10 +16,9 @@ export class GipherService {
         this.gipherSubject = new BehaviorSubject(this.giphers);
     }
     
-    fetchGiphersFromServer(query:string) {
+    fetchGiphers(query:string) {
         const token = this.authService.getBearerToken();
         const headerValue = 'Bearer ' + token;
-        console.log(headerValue);
         return this.httpClient.get<Array<Gipher>>(`http://localhost:8088/api/v1/gipher/externalapi/${this.authService.getUserId()}/${query}`, {
             headers: new HttpHeaders().set('Authorization', headerValue)
         })
@@ -28,7 +27,6 @@ export class GipherService {
     updateGipher(gipher:Gipher) {
         const token = this.authService.getBearerToken();
         const headerValue = 'Bearer ' + token;
-        console.log(headerValue);
         return this.httpClient.put<Gipher>(`http://localhost:8088/api/v1/gipher/`+gipher.gipherId, gipher,{
             headers: new HttpHeaders().set('Authorization', headerValue)
         })
@@ -45,7 +43,6 @@ export class GipherService {
     fetchFavouriteGipher(userId:string) {
         const token = this.authService.getBearerToken();
         const headerValue = 'Bearer ' + token;
-        console.log(headerValue);
         return this.httpClient.get<Array<Gipher>>(`http://localhost:8088/api/v1/gipher/favourite/${userId}`, {
             headers: new HttpHeaders().set('Authorization', headerValue)
         })
