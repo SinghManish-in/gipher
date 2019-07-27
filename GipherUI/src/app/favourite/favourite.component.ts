@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Gipher } from '../model/gipher.model';
+import { GipherService } from '../service/gipher.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-favourite',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouriteComponent implements OnInit {
 
-  constructor() { }
+  giphers: Array<Gipher>;
+  constructor(private gipherService: GipherService, private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {
+  getSantizeUrl(url:string) {
+    return this.gipherService.getSantizeUrl(url);
   }
 
+  ngOnInit() {
+    this.gipherService.fetchFavouriteGipher(this.authenticationService.getUserId()).subscribe(
+      data => {
+        this.giphers = data;
+        console.log(data.length+" data Favourite " + data[0].favouritedBy);
+      }, err => {
+        console.log(err);
+      });
+  }
 }

@@ -37,7 +37,11 @@ export class GipherViewComponent implements OnInit {
 
   favouriteGipher(gipher:Gipher){
     gipher.favouritedBy = gipher.userId;
-    this.gipherService.updateGipher(gipher);
+    this.gipherService.updateGipher(gipher).subscribe(data =>{
+      console.log("FAV SUCESSS");
+    },err=>{
+      console.log("FAV ERROR");
+    });
   }
 
   ngOnInit() {
