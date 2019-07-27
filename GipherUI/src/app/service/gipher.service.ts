@@ -29,7 +29,7 @@ export class GipherService {
         const token = this.authService.getBearerToken();
         const headerValue = 'Bearer ' + token;
         console.log(headerValue);
-        return this.httpClient.put<Gipher>(`http://localhost:8088/api/v1/gipher`, {
+        return this.httpClient.put<Gipher>(`http://localhost:8088/api/v1/gipher`, gipher,{
             headers: new HttpHeaders().set('Authorization', headerValue)
         })
     }
@@ -37,7 +37,6 @@ export class GipherService {
     fetchBookmarkedGipher(userId:string) {
         const token = this.authService.getBearerToken();
         const headerValue = 'Bearer ' + token;
-        console.log(headerValue);
         return this.httpClient.get<Array<Gipher>>(`http://localhost:8088/api/v1/gipher/bookmark/${userId}`, {
             headers: new HttpHeaders().set('Authorization', headerValue)
         })

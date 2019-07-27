@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
   searchSubmit() {
     this.submitted = true;
     localStorage.setItem('query', this.searchForm.value.query);
-    console.log("query"+this.searchForm.value.query);
     location.reload();
   }
 
@@ -47,6 +46,7 @@ export class DashboardComponent implements OnInit {
   get lf() {
     return this.searchForm.controls;
   }
+  
   ngOnInit() {
     this.value = "";
   }

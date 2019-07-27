@@ -16,30 +16,6 @@ export class RouterService {
     this.router.navigate(['login']);
   }
 
-  routeToGipherView() {
-    console.log("routeToGipherView");
-      this.router.navigate(['dashboard/gipher']);
-  }
-
-  routeToBookmarkView() {
-    console.log("routeToBookmarkView");
-      this.router.navigate(['dashboard',
-      {
-        outlets: {
-          bookmark: ['bookmark']
-        }
-      }])
-  }
-
-  routeToFavouriteView() {
-    console.log("routeToFavouriteView");
-      this.router.navigate(['dashboard',{
-        outlets: {
-          favourite: ['favourite']
-        }
-      }]);
-  }
-
   routeBack() {
     this.location.back();
   }

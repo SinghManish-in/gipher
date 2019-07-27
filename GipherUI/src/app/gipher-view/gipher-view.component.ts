@@ -19,7 +19,20 @@ export class GipherViewComponent implements OnInit {
 
   bookmarkGipher(gipher:Gipher){
     gipher.bookMarkedBy = gipher.userId; 
-    this.gipherService.updateGipher(gipher);
+    console.log("gipherId "+gipher.gipherId);
+      console.log("embedURL "+gipher.embedURL);
+      console.log("bookMarkedBy "+gipher.bookMarkedBy);
+      console.log("favouritedBy "+gipher.favouritedBy);
+      console.log("userId "+gipher.userId);
+    this.gipherService.updateGipher(gipher).subscribe(data => {
+      console.log("gipherId "+data.gipherId);
+      console.log("embedURL "+data.embedURL);
+      console.log("bookMarkedBy "+data.bookMarkedBy);
+      console.log("favouritedBy "+data.favouritedBy);
+      console.log("userId "+data.userId);
+    },err =>{
+      console.log("bookmarkGipher error"+err);
+    });
   }
 
   favouriteGipher(gipher:Gipher){
@@ -28,7 +41,7 @@ export class GipherViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("ngOnInit"+localStorage.getItem('query'));
+    console.log("gipher view ngOnInit"+localStorage.getItem('query'));
     this.gipherService.fetchGiphersFromServer(localStorage.getItem('query')).subscribe(
       data => {
       this.giphers=data;

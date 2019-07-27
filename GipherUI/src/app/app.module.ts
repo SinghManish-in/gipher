@@ -40,23 +40,7 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [CanActivateRouteGuard],
-    children: [
-      {
-        path: 'gipher',
-        component: GipherViewComponent
-      },
-      {
-        path: 'bookmark',
-        component: BookmarkComponent,
-        outlet : 'bookmark'
-      },
-      {
-        path: 'favourite',
-        component: FavouriteComponent,
-        outlet : 'favourite'
-      },
-    ]
+    canActivate: [CanActivateRouteGuard]
   },
   {
     path: '',

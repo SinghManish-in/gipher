@@ -9,20 +9,20 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./bookmark.component.css']
 })
 export class BookmarkComponent implements OnInit {
-  giphers : Array<Gipher>;
-  constructor(private gipherService:GipherService,private authenticationService : AuthenticationService) { }
+  giphers: Array<Gipher>;
+  constructor(private gipherService: GipherService, private authenticationService: AuthenticationService) { }
 
-  fetchBookmarkedGiphers(){
-    
-    this.gipherService.fetchBookmarkedGipher(this.authenticationService.getUserId()).subscribe(
-    data => {
-    this.giphers=data;
-  }, err => {
-    console.log(err);
-  });
-}
-
-  ngOnInit() {
+  getSantizeUrl(url:string) {
+    return this.gipherService.getSantizeUrl(url);
   }
 
+  ngOnInit() {
+    this.gipherService.fetchBookmarkedGipher(this.authenticationService.getUserId()).subscribe(
+      data => {
+        this.giphers = data;
+        console.log(data.length+" data bookmark " + data[0].bookMarkedBy);
+      }, err => {
+        console.log(err);
+      });
+  }
 }

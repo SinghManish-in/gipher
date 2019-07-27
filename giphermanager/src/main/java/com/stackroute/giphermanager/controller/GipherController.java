@@ -1,6 +1,7 @@
 package com.stackroute.giphermanager.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stackroute.giphermanager.exception.GipherNotCreatedException;
 import com.stackroute.giphermanager.exception.GipherNotFoundExeption;
 import com.stackroute.giphermanager.model.Gipher;
 import com.stackroute.giphermanager.service.GipherService;
@@ -29,12 +31,12 @@ public class GipherController {
 		this.gipherService = gipherService;
 	}
 	
-	@GetMapping("/api/v1/gipher/{giferId}")
-	public ResponseEntity<?> getAllGipherById(@PathVariable("userid") String userId) {
-		List<Gipher> giphers;
+	@GetMapping("/api/v1/gipher/{gipherId}")
+	public ResponseEntity<?> getAllGipherById(@PathVariable("gipherId") String gipherId) {
+		Optional<Gipher> gipher;
 		try {
-			giphers = gipherService.getAllGipherByUserId(userId);
-			return new ResponseEntity<>(giphers, HttpStatus.OK);
+			gipher = gipherService.getGipherById(gipherId);
+			return new ResponseEntity<>(gipher, HttpStatus.OK);
 		} catch (GipherNotFoundExeption e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -56,19 +58,23 @@ public class GipherController {
 
 	@PostMapping("/api/v1/gipher")
 	public ResponseEntity<?> createGipher(@RequestBody Gipher gipher) {
-		boolean flag = gipherService.createGipher(gipher);
-		if (flag) {
-			return new ResponseEntity<>(gipher, HttpStatus.CREATED);
-		} else {
+		Gipher gipherCreated = null;
+		try {
+			gipherCreated = gipherService.createGipher(gipher);
+			return new ResponseEntity<>(gipherCreated,HttpStatus.CREATED);
+		} catch (GipherNotCreatedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
+					
 	}
 
-	@PutMapping("/api/v1/gipher")
-	public ResponseEntity<?> updateGipher(Gipher gipher) {
+	@PutMapping("/api/v1/gipher/{id}")
+	public ResponseEntity<?> updateGipher(@RequestBody Gipher gipher,@PathVariable("id") String id) {
 		Gipher updateGipher = null;
 		try {
-			updateGipher = gipherService.updateGipher(gipher);
+			updateGipher = gipherService.updateGipher(gipher,id);
 			return new ResponseEntity<>(updateGipher, HttpStatus.OK);
 		} catch (GipherNotFoundExeption e) {
 			e.printStackTrace();
@@ -114,6 +120,7 @@ public class GipherController {
 	@GetMapping("/api/v1/gipher/bookmark/{bookmarkedBy}")
 	public ResponseEntity<?> getAllGipherByBookmarkedBy(@PathVariable("bookmarkedBy") String bookmarkedBy) {
 		List<Gipher> giphers;
+		System.out.println("by bookmark"+bookmarkedBy);
 		try {
 			giphers = gipherService.getAllGipherByBookmark(bookmarkedBy);
 			return new ResponseEntity<>(giphers, HttpStatus.OK);
