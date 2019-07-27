@@ -24,7 +24,6 @@ export class AuthenticationService {
   }
 
   setBearerToken(token) {
-    console.log("----:"+token)
     localStorage.setItem('bearerToken', token);
   }
 

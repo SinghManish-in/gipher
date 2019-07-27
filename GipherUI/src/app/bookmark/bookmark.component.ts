@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GipherService } from '../service/gipher.service';
+import { Gipher } from '../model/gipher.model';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-bookmark',
@@ -6,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bookmark.component.css']
 })
 export class BookmarkComponent implements OnInit {
+  giphers : Array<Gipher>;
+  constructor(private gipherService:GipherService,private authenticationService : AuthenticationService) { }
 
-  constructor() { }
+  fetchBookmarkedGiphers(){
+    
+    this.gipherService.fetchBookmarkedGipher(this.authenticationService.getUserId()).subscribe(
+    data => {
+    this.giphers=data;
+  }, err => {
+    console.log(err);
+  });
+}
 
   ngOnInit() {
   }
