@@ -77,10 +77,10 @@ public class GipherServiceImpl implements GipherService {
 	}
 	
 	@Override
-	public List<Gipher> getGipherFromExternalAPI(String userId,String query) throws GipherNotFoundExeption{	
+	public List<Gipher> getGipherFromExternalAPI(String userId,String query) throws GipherNotCreatedException{	
 		List<Gipher> savedGiphers = new ArrayList<Gipher>();
 		for(Gipher gipher : gipherHelper.getGipherFromExternalAPI(userId,query))
-			savedGiphers.add(gipherRepository.save(gipher));
+			savedGiphers.add(createGipher(gipher));
 		return savedGiphers;
 	}
 

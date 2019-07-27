@@ -25,11 +25,11 @@ export class GipherViewComponent implements OnInit {
       console.log("favouritedBy "+gipher.favouritedBy);
       console.log("userId "+gipher.userId);
     this.gipherService.updateGipher(gipher).subscribe(data => {
-      console.log("gipherId "+data.gipherId);
-      console.log("embedURL "+data.embedURL);
-      console.log("bookMarkedBy "+data.bookMarkedBy);
-      console.log("favouritedBy "+data.favouritedBy);
-      console.log("userId "+data.userId);
+      console.log("gipherId1 "+data.gipherId);
+      console.log("embedURL1 "+data.embedURL);
+      console.log("bookMarkedBy1 "+data.bookMarkedBy);
+      console.log("favouritedBy1 "+data.favouritedBy);
+      console.log("userId1 "+data.userId);
     },err =>{
       console.log("bookmarkGipher error"+err);
     });

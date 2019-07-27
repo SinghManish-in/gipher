@@ -99,7 +99,7 @@ public class GipherController {
 		try {
 			giphers = gipherService.getGipherFromExternalAPI(userId,query);
 			return new ResponseEntity<>(giphers, HttpStatus.OK);
-		} catch (GipherNotFoundExeption e) {
+		} catch (GipherNotCreatedException e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

@@ -29,7 +29,7 @@ export class GipherService {
         const token = this.authService.getBearerToken();
         const headerValue = 'Bearer ' + token;
         console.log(headerValue);
-        return this.httpClient.put<Gipher>(`http://localhost:8088/api/v1/gipher`, gipher,{
+        return this.httpClient.put<Gipher>(`http://localhost:8088/api/v1/gipher/`+gipher.gipherId, gipher,{
             headers: new HttpHeaders().set('Authorization', headerValue)
         })
     }
