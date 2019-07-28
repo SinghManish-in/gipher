@@ -120,7 +120,6 @@ public class GipherController {
 	@GetMapping("/api/v1/gipher/bookmark/{bookmarkedBy}")
 	public ResponseEntity<?> getAllGipherByBookmarkedBy(@PathVariable("bookmarkedBy") String bookmarkedBy) {
 		List<Gipher> giphers;
-		System.out.println("by bookmark"+bookmarkedBy);
 		try {
 			giphers = gipherService.getAllGipherByBookmark(bookmarkedBy);
 			return new ResponseEntity<>(giphers, HttpStatus.OK);

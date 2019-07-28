@@ -20,6 +20,7 @@ export class GipherViewComponent implements OnInit {
   bookmarkGipher(gipher:Gipher){
     gipher.bookMarkedBy = gipher.userId; 
     this.gipherService.updateGipher(gipher).subscribe(data => {
+      this.updateExistingGiphers(data);
     },err =>{
       console.log("bookmarkGipher: "+err);
     });
@@ -28,9 +29,27 @@ export class GipherViewComponent implements OnInit {
   favouriteGipher(gipher:Gipher){
     gipher.favouritedBy = gipher.userId;
     this.gipherService.updateGipher(gipher).subscribe(data =>{
+      this.updateExistingGiphers(data);
     },err=>{
       console.log("favouriteGipher: "+err);
     });
+  }
+
+  updateExistingGiphers(gipher:Gipher){
+    for(var i=0;i<this.giphers.length;i++){
+      if(gipher.gipherId == this.giphers[i].gipherId){
+        this.giphers[i]=gipher;
+        break;
+      }
+    }
+  }
+
+  printGipher(gipher : Gipher){
+    console.log("gipherId: "+gipher.gipherId);
+    console.log("userId: "+gipher.userId);
+    console.log("embedURL: "+gipher.embedURL);
+    console.log("bookMarkedBy: "+gipher.bookMarkedBy);
+    console.log("favouritedBy: "+gipher.favouritedBy);
   }
 
   ngOnInit() {

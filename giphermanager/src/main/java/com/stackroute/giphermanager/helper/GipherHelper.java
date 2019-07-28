@@ -43,7 +43,7 @@ public class GipherHelper {
 		for(GipherExternal gipherExternal : giphersExternal) {
 			Gipher gipher = new Gipher();
 			gipher.setUserId(userId);
-			gipher.setGipherId(gipherExternal.getId());
+			gipher.setGipherId(gipherExternal.getId()+"_"+userId);
 			gipher.setEmbedURL(gipherExternal.getEmbed_url());
 			giphers.add(gipher);
 		}
