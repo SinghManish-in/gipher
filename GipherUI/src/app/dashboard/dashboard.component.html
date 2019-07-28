@@ -21,9 +21,9 @@
 </div>
 
 <mat-tab-group >
-  <mat-tab label="Giphers" (selectedTabChange)="onLinkClick($event)">
+  <mat-tab label="Giphers">
     <ng-template matTabContent>
-      <app-gipher-view ></app-gipher-view>
+      <app-gipher-view [searchedGiphers]="searchedGiphers"></app-gipher-view>
     </ng-template>
   </mat-tab>
   <mat-tab label="Bookmarks">

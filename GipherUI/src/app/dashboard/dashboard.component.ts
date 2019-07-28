@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Gipher } from '../model/gipher.model';
 import { GipherService } from '../service/gipher.service';
 import { RouterService } from '../service/router.service';
 import { Validators } from '@angular/forms';
-
-
+import {GipherViewComponent} from '../gipher-view/gipher-view.component'
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {  
+  searchedGiphers: Array<Gipher>;
   value : string
   submitMessage: String = '';
   submitted : Boolean = false;
-  giphers: Array<Gipher>;
   constructor(private gipherService: GipherService, private routerService: RouterService) {}
 
   searchForm = new FormGroup ({
@@ -27,8 +26,12 @@ export class DashboardComponent implements OnInit {
   
   searchSubmit() {
     this.submitted = true;
-    localStorage.setItem('query', this.searchForm.value.query);
-    location.reload();
+    this.gipherService.fetchGiphers(this.searchForm.value.query).subscribe(
+      data => {
+      this.searchedGiphers=data;
+    }, err => {
+      console.log(err);
+    });
   }
 
   searchhashaserror() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GipherService} from '../service/gipher.service';
 import { Gipher } from '../model/gipher.model';
 
@@ -8,9 +8,8 @@ import { Gipher } from '../model/gipher.model';
   styleUrls: ['./gipher-view.component.css']
 })
 export class GipherViewComponent implements OnInit {
-
-  giphers : Array<Gipher>;
-
+  @Input() public searchedGiphers: Array<Gipher>;
+  
   constructor(private gipherService: GipherService) { }
 
   getSantizeUrl(url:string){
@@ -36,29 +35,15 @@ export class GipherViewComponent implements OnInit {
   }
 
   updateExistingGiphers(gipher:Gipher){
-    for(var i=0;i<this.giphers.length;i++){
-      if(gipher.gipherId == this.giphers[i].gipherId){
-        this.giphers[i]=gipher;
+    for(var i=0;i<this.searchedGiphers.length;i++){
+      if(gipher.gipherId == this.searchedGiphers[i].gipherId){
+        this.searchedGiphers[i]=gipher;
         break;
       }
     }
   }
 
-  printGipher(gipher : Gipher){
-    console.log("gipherId: "+gipher.gipherId);
-    console.log("userId: "+gipher.userId);
-    console.log("embedURL: "+gipher.embedURL);
-    console.log("bookMarkedBy: "+gipher.bookMarkedBy);
-    console.log("favouritedBy: "+gipher.favouritedBy);
-  }
-
   ngOnInit() {
-    this.gipherService.fetchGiphers(localStorage.getItem('query')).subscribe(
-      data => {
-      this.giphers=data;
-    }, err => {
-      console.log(err);
-    });
   }
 
 }
