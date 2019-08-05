@@ -1,8 +1,7 @@
-<div *ngFor="let gipher of giphers">
-  <div class="card-group">
-    <div class="row">
-      <div class="card">
-        <div class="col-sm-4">
+<div class="row">
+    <strong *ngFor="let gipher of giphers">
+      <div class="col-sm-3">
+        <div class="card">
           <div class="card-body">
             <div style="width:20%;height:20%;padding-bottom:5%;padding-top:5%;position:relative;">
               <iframe [src]=getSantizeUrl(gipher.embedURL) style="position:relative" frameBorder="0" class="giphy-embed"
@@ -11,6 +10,5 @@
           </div>
         </div>
       </div>
-    </div>
+    </strong>
   </div>
-</div>
