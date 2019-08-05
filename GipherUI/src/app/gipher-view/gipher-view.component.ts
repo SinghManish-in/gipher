@@ -17,6 +17,7 @@ export class GipherViewComponent implements OnInit {
   }
 
   bookmarkGipher(gipher:Gipher){
+    alert("bookamrk");
     gipher.bookMarkedBy = gipher.userId; 
     this.gipherService.updateGipher(gipher).subscribe(data => {
       this.updateExistingGiphers(data);
@@ -26,6 +27,7 @@ export class GipherViewComponent implements OnInit {
   }
 
   favouriteGipher(gipher:Gipher){
+    alert("fav");
     gipher.favouritedBy = gipher.userId;
     this.gipherService.updateGipher(gipher).subscribe(data =>{
       this.updateExistingGiphers(data);
