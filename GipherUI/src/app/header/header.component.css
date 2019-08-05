@@ -1,4 +1,4 @@
-.keep-c-logout {
+.logout {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -12,7 +12,4 @@
 }
 .floatRight{
 	float:right;
-}
-.keep-c-toggle-view{
-	padding-top: 0.5em;
 }
