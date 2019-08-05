@@ -1,27 +1,21 @@
-<div class="card-group">
+<div class="row">
   <strong *ngFor="let gipher of searchedGiphers">
-
-    <div class="row">
+    <div class="col-sm-3">
       <div class="card">
-
-        <div class="col-sm-4">
-          <div class="card-body">
-
-            <div style="width:20%;height:20%;padding-bottom:5%;padding-top:5%;position:relative;">
-              <iframe [src]=getSantizeUrl(gipher.embedURL) style="position:relative" frameBorder="0" class="giphy-embed"
-                allowFullScreen></iframe>
+        <div class="card-body">
+          <div style="width:20%;height:20%;padding-bottom:5%;padding-top:5%;position:relative;">
+            <iframe [src]=getSantizeUrl(gipher.embedURL) style="position:relative" frameBorder="0" class="giphy-embed"
+              allowFullScreen></iframe>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="assets/favIcon.jfif" width="50%" height="50%" (click)="favouriteGipher(gipher)" />
+            </div>
+            <div class="col-sm-5">
+              <img src="assets/bookmark.png" width="25%" height="25%" (click)="bookmarkGipher(gipher)" />
             </div>
           </div>
         </div>
-
-        <div class="col-sm-1">
-          <img src="assets/favIcon.jfif" width="50%" height="50%" (click)="favouriteGipher(gipher)" />
-        </div>
-
-        <div class="col-sm-1">
-          <img src="assets/bookmark.png" width="50%" height="50%" (click)="bookmarkGipher(gipher)" />
-        </div>
-
       </div>
     </div>
   </strong>
