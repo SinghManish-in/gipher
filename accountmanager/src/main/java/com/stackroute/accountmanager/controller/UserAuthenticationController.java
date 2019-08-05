@@ -39,7 +39,6 @@ public class UserAuthenticationController {
 
     @PostMapping("/api/v1/auth/register")
     public ResponseEntity<?> registerUser(@RequestBody User user){
-    	System.out.println(user);
     	Calendar calender = Calendar.getInstance();
     	Date date = calender.getTime();
     	user.setUserAddedDate(date);;
@@ -56,7 +55,6 @@ public class UserAuthenticationController {
 
     @PostMapping("/api/v1/auth/login")
     public ResponseEntity<?> login(@RequestBody User user){
-    	System.out.println(user.getUserId()+"-"+ user.getUserPassword());
     	try {
 			String token = getToken(user.getUserId(), user.getUserPassword());
 			map.clear();
