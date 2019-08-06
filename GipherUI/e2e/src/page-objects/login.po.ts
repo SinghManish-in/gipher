@@ -19,15 +19,18 @@ export class LoginPage {
   }
   // get username input box
   getUserNameInputBox(): ElementFinder {
-    return element(by.className('username'));
+    return element(by.css("input[formControlName=userId]"));
+    
   }
   // check username input box is exist or not
   isUserNameInputBoxPresent(): promise.Promise<boolean> {
     return this.getUserNameInputBox().isPresent();
   }
+
+  
   // get password input box
   getPasswordInputBox(): ElementFinder {
-    return element(by.className('password'));
+    return element(by.css("input[formControlName=userPassword]"));
   }
   // check password input box is exist or not
   isPasswordInputBoxPresent(): promise.Promise<boolean> {
@@ -35,7 +38,7 @@ export class LoginPage {
   }
   // get submit button
   getSubmitButton(): ElementFinder {
-    return this.getloginComponent().element(by.buttonText('Submit'));
+    return this.getloginComponent().element(by.buttonText('Login'));
   }
   // check submit button is present or not
   isSubmitButtonPresent(): promise.Promise<boolean> {
