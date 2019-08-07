@@ -38,12 +38,12 @@ describe('login page', () => {
     page.navigateToLogin();
     let newNoteValues = page.addLoginValues();
     expect(page.getLoginInputBoxesDefaultValues()).toEqual(newNoteValues, 'Should be able to set values for username and password');
-    //page.clickLoginButton();
+    page.clickLoginButton();
     page.navigateToDashboardView();
     page.getCurrentURL().then((url) => {
       if (url.indexOf('login') > -1) {
         newNoteValues = page.addLoginValues();
-        //page.clickLoginButton();
+        page.clickLoginButton();
         page.navigateToDashboardView();
         expect(page.getCurrentURL()).toContain('login');
       } else {
