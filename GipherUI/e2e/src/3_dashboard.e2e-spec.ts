@@ -14,4 +14,10 @@ describe('dashboard page', () => {
     .toBeTruthy(`<input class="search" [formControl]='query'> should exist in dashboard.component.html`);
   });
 
+  it('should get search button', () => {
+    page.navigateToDashBoard();
+    expect(page.isSearchButtonPresent())
+    .toBeTruthy(`<button type="submit" [disabled]="!searchForm.valid" mat-button>Search</button>`);
+  });
+
 });
