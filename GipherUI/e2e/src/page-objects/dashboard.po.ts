@@ -28,4 +28,16 @@ export class DashboardPage {
   clickSearchButton(): promise.Promise<void> {
     return this.getSearchButton().click();
   }
+  getSearchInputBoxesDefaultValues(): any {
+    let query;
+    query = this.getSearchInputBox().getAttribute('value');
+    return Promise.all([query]).then( (values) => {
+      return values;
+    });
+  }
+  addSearchValues(): any {
+    const query: any = "love";
+    this.getSearchInputBox().sendKeys(query);
+    return Object.keys(query).map(key => query[key]);
+  }
 }

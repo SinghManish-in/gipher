@@ -36,13 +36,13 @@ describe('login page', () => {
 
   it('should login into the system', () => {
     page.navigateToLogin();
-    let newNoteValues = page.addLoginValues();
-    expect(page.getLoginInputBoxesDefaultValues()).toEqual(newNoteValues, 'Should be able to set values for username and password');
+    let loginValues = page.addLoginValues();
+    expect(page.getLoginInputBoxesDefaultValues()).toEqual(loginValues, 'Should be able to set values for username and password');
     page.clickLoginButton();
     page.navigateToDashboardView();
     page.getCurrentURL().then((url) => {
       if (url.indexOf('login') > -1) {
-        newNoteValues = page.addLoginValues();
+        loginValues = page.addLoginValues();
         page.clickLoginButton();
         page.navigateToDashboardView();
         expect(page.getCurrentURL()).toContain('login');
