@@ -11,7 +11,7 @@ describe('dashboard page', () => {
   it('should get search input box', () => {
     page.navigateToDashBoard();
     expect(page.isSearchInputBoxPresent())
-    .toBeTruthy(`<input class="search" [formControl]='query'> should exist in login.component.html`);
+    .toBeTruthy(`<input class="search" [formControl]='query'> should exist in dashboard.component.html`);
   });
 
 });
