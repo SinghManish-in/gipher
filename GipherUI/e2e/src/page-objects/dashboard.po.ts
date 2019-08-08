@@ -31,13 +31,18 @@ export class DashboardPage {
   getSearchInputBoxesDefaultValues(): any {
     let query;
     query = this.getSearchInputBox().getAttribute('value');
-    return Promise.all(query).then( (values) => {
+    return Promise.resolve(query).then( (values) => {
       return values;
     });
   }
   addSearchValues(): any {
     const query: any = "love";
     this.getSearchInputBox().sendKeys(query);
-    return Object.keys(query).map(key => query[key]);
+  }
+  getGipherViewTab(): ElementFinder {
+    return this.getDashboardComponent().element(by.id('md-tab-label-0-0'));
+  }
+  isGipherViewPresent(): promise.Promise<boolean> {
+    return this.getGipherViewTab().isPresent();
   }
 }

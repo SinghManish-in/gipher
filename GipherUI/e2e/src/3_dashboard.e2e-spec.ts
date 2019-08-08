@@ -23,18 +23,8 @@ describe('dashboard page', () => {
   it('should search gipher', () => {
     page.navigateToDashBoard();
     let searchValues = page.addSearchValues();
-    //expect(page.getSearchInputBoxesDefaultValues()).toEqual(searchValues, 'Should be able to set values for username and password');
     page.clickSearchButton();
-    // page.getCurrentURL().then((url) => {
-    //   if (url.indexOf('login') > -1) {
-    //     newNoteValues = page.addLoginValues();
-    //     page.clickLoginButton();
-    //     page.navigateToDashboardView();
-    //     expect(page.getCurrentURL()).toContain('login');
-    //   } else {
-    //     expect(page.getCurrentURL()).toContain('dashboard');
-    //   }
-    // });
+    expect(page.isGipherViewPresent());
   });
 
 });
