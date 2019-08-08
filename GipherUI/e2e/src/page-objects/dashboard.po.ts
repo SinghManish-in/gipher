@@ -31,7 +31,7 @@ export class DashboardPage {
   getSearchInputBoxesDefaultValues(): any {
     let query;
     query = this.getSearchInputBox().getAttribute('value');
-    return Promise.all([query]).then( (values) => {
+    return Promise.all(query).then( (values) => {
       return values;
     });
   }
