@@ -20,11 +20,25 @@ describe('dashboard page', () => {
     .toBeTruthy(`<button type="submit" [disabled]="!searchForm.valid" mat-button>Search</button>`);
   });
 
-  it('should search gipher', () => {
+  it('should gipher view be rendered', () => {
     page.navigateToDashBoard();
-    let searchValues = page.addSearchValues();
+    page.addSearchValues();
     page.clickSearchButton();
     expect(page.isGipherViewPresent());
+  });
+
+  it('should bookmark view be rendered', () => {
+    page.navigateToDashBoard();
+    page.addSearchValues();
+    page.clickSearchButton();
+    expect(page.isBookmarkViewPresent());
+  });
+
+  it('should favourite view be rendered', () => {
+    page.navigateToDashBoard();
+    page.addSearchValues();
+    page.clickSearchButton();
+    expect(page.isFavouriteViewPresent());
   });
 
 });

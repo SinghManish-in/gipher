@@ -45,4 +45,17 @@ export class DashboardPage {
   isGipherViewPresent(): promise.Promise<boolean> {
     return this.getGipherViewTab().isPresent();
   }
+  getBookamrkViewTab(): ElementFinder {
+    return this.getDashboardComponent().element(by.id('md-tab-label-0-1'));
+  }
+  isBookmarkViewPresent(): promise.Promise<boolean> {
+    return this.getGipherViewTab().isPresent();
+  }
+  getFavouriteViewTab(): ElementFinder {
+    return this.getDashboardComponent().element(by.id('md-tab-label-0-2'));
+  }
+  isFavouriteViewPresent(): promise.Promise<boolean> {
+    return this.getGipherViewTab().isPresent();
+  }
+  
 }
